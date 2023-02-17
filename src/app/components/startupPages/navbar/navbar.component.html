@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-light shadow-lg p-1 mb-5 bg-body rounded">
+  <div class="container-fluid ">
+    
+    
+    <a class="navbar-brand mx-5 nav-link disabled" href="#">
+      <img src="https://img.freepik.com/free-vector/coffee-go-art-composition_1284-35973.jpg?size=338&ext=jpg&ga=GA1.2.1453991399.1676499289&semt=ais" alt="coffe">
+      Coffee
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center w-75 mx-auto" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-4">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item mx-4">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item mx-4">
+          <a class="nav-link" href="#">Products</a>
+        </li>
+        <li class="nav-item mx-4">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+
+      <ul  class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign Up</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            login
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">admin</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/userLogin']" routerLinkActive="router-link-active" >user</a></li>
+           
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
