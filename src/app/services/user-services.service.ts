@@ -23,7 +23,7 @@ export class UserServices{
 
 
 
-    var reqHeader = new HttpHeaders({ 
+    let reqHeader = new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': authroizationToken 
    });

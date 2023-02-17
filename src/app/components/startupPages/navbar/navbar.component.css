@@ -7,3 +7,9 @@ a:hover {
     background-color: yellow;
     border-radius: 5%;
 }
+
+.card-image{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}

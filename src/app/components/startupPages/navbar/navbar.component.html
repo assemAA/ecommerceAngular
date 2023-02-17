@@ -30,23 +30,96 @@
       </ul>
     </div>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+    <!--login and sign up choices -->
+    <ng-template [ngIf]="needLogin" [ngIfElse]="userLoginEnd">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown" >
 
-      <ul  class="navbar-nav ">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign Up</a>
+        <ul  class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign Up</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              login
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">admin</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/userLogin']" routerLinkActive="router-link-active" >user</a></li>
+            
+            </ul>
+          </li>
+        </ul>
+      </div>
+  </ng-template>
+    <!--Login and sing up choices -->
+  <ng-template #userLoginEnd>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown" >
+
+      <ul class="navbar-nav ">
+
+        <li class="nav-item"
+        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+        (click)="getCardProducts()">
+            <span class="material-symbols-outlined mt-2 user-select-none">
+              shopping_cart_checkout
+            </span>
+
+            
         </li>
+
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            login
+            {{username}}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">admin</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/userLogin']" routerLinkActive="router-link-active" >user</a></li>
-           
+            <li><a class="dropdown-item user-select-none" (click)="userSignOut()">sign out </a></li>
           </ul>
         </li>
       </ul>
     </div>
+  </ng-template>
   </div>
 </nav>
+
+
+
+<!--off canvas body -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title mx-auto fs-3" id="offcanvasRightLabel">Your cart </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <br>
+      <!--table of cards-->
+        <div class="container">
+          <div class="row mt-4" *ngFor="let prod of cardProducts">
+            <div class="col-lg-4">
+              <img class="card-image" src="{{prod.productId.productImage}}" alt="prod-image">
+            </div>
+            <div class="col lg-8">
+              <p class="d-none">{{prod._id}}</p>
+              <p class="">{{prod.productId.productName}}</p>
+              <p> QT : {{prod.quantity}}</p>
+              <p class="">{{prod.productId.price + " LE"}}</p>
+              <div>
+                <button class="btn btn-primary mx-1" (click)="increamentQuantity(prod._id , prod.quantity)">+</button>
+                <button class="btn btn-warning mx-1" (click)="decreamentQuantity(prod._id , prod.quantity)">-</button>
+                <button class="btn btn-danger mx-1" (click)="removeProcess(prod._id)"><span class="material-symbols-outlined">
+                  delete
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--table of cards--> 
+
+        <div class="mt-5">
+          <h3 class="text-center"> Total price </h3>
+        </div>
+  </div>
+</div>
+<!--offcanvas body -->
