@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { UserServices } from '../../../services/user-services.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,8 +8,12 @@ import { UserServices } from '../../../services/user-services.service';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-export class UserLoginComponent {
-  constructor(private userServices : UserServices ) {}
+export class UserLoginComponent implements OnDestroy {
+  constructor(private userServices : UserServices , private router : Router ) {
+    if (localStorage.getItem('token')){
+      this.router.navigate([''])
+    }
+  }
 
   invalidLogin : boolean = false
 
@@ -25,10 +30,23 @@ export class UserLoginComponent {
       this.userServices.loginUser(userLoginData).subscribe( (res : any) => {
         localStorage.setItem('loginStatus' , res.data)
         localStorage.setItem('token' , res.token)
-        this.userServices.getUser(userLoginData , res.token).subscribe( (data :any ) => {
-          localStorage.setItem('userdata' , JSON.stringify( data))
-          this.invalidLogin = false
-        }) 
+        if(localStorage.getItem('loginStatus')  == "login as a normal user"){
+          this.userServices.getUser(userLoginData , res.token).subscribe( (data :any ) => {
+            localStorage.setItem('userdata' , JSON.stringify( data))
+            this.invalidLogin = false
+            
+            //this.router.navigate(['/products'])
+            window.location.reload()
+            
+          }) 
+        }
+        else if (localStorage.getItem('loginStatus')  == "login as admin") {
+            this.invalidLogin = false
+            
+            window.location.reload()
+            //this.router.navigate([''])
+        }
+        
         
       } ,
       (err : any) => {alert ("in correct email or password ")
@@ -39,5 +57,9 @@ export class UserLoginComponent {
       )
    
    
+  }
+
+  ngOnDestroy(){
+  
   }
 }

@@ -1,6 +1,10 @@
 
 
-<div class="w-75 mt-5 mx-auto">
+<div class="w-75 mt-5 mx-auto p-5 mb-5 border border-success bg-light shadow p-3 mb-5 bg-body rounded">
+
+  <div class="p-5 alert alert-warning fs-1 lead rounded text-center w-75 mx-auto">
+      Login with mail and password
+  </div>
   
     <div class="alert alert-danger w-75 text-center lead rounded fs-2 mx-auto" *ngIf="invalidLogin">
       you entered incorrect email or password 
@@ -18,3 +22,5 @@
           <button class="btn btn-primary w-25 d-block mx-auto lead rounded" (click)="loginUser()">Login</button>
       </div>
 </div>
+
+

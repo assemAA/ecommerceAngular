@@ -1,0 +1,26 @@
+.card{
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+h3{
+    color: #000000;
+    font-family: "M PLUS Rounded 1c",sans-serif;
+    font-size: 24px;
+    letter-spacing: 0;
+}
+span{
+    color: #a5a5a5;
+    font-family: "M PLUS Rounded 1c",sans-serif;
+    font-size: 24px;
+    letter-spacing: 0;
+
+}
+
+
+  
+  
+  .button:active {
+ 
+    transform: translateY(4px);
+}

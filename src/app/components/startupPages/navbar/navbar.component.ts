@@ -1,4 +1,4 @@
-import { Component, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnChanges, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardService } from '../../../services/card.service';
 
@@ -7,18 +7,45 @@ import { CardService } from '../../../services/card.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnChanges , DoCheck {
+export class NavbarComponent implements OnChanges , DoCheck , OnInit {
   username :string | null = ""
   needLogin :boolean = true
   cardProducts :any[] = []
+  totalPrice : number = 0 
+  loginStatus : string | undefined | null = ""
 
 
   
   constructor ( private router : Router ,private cardService : CardService) {
     this.needLogin = true
-    localStorage.clear()
+    this.totalPrice = 0
+    this.cardProducts = []
+    //localStorage.clear()
+
+    if (localStorage.getItem('token'))
+      this.identifyLogin()
+
+
+      if (this.loginStatus == "user"){
+        this.cardService.getCardProducts().subscribe( (res :any ) => {
+        this.cardProducts = res.data 
+       // console.log(this.cardProducts)
+      })
+    }
+    
   }
 
+  identifyLogin () {
+    if (localStorage.getItem('loginStatus') == "login as a normal user") 
+      this.loginStatus = "user"
+    else if (localStorage.getItem('loginStatus')== "login as admin")
+      this.loginStatus = "admin"
+  }
+
+  ngOnInit() {
+    
+    console.log(this.loginStatus)
+  }
 
   ngDoCheck(): void {
     if (localStorage.getItem('userdata')) {
@@ -27,8 +54,18 @@ export class NavbarComponent implements OnChanges , DoCheck {
       this.username = userData.data[0].userName
       //console.log(this.username)
       this.needLogin = false
+
+      this.totalPrice = 0 
+      this.cardProducts.map((ele:any) => {
+        this.totalPrice += ele.productId.price * ele.quantity
+      })
+    }
+    else if (localStorage.getItem('loginStatus') == "login as admin") {
+      this.needLogin = false
     }
   }
+
+  
   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
     console.log("on change ")
   }

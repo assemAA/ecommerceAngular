@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class CardService {
-
- 
+export class BuyProcessService {
 
   userToken : any
   reqHeader :any
@@ -24,36 +21,12 @@ export class CardService {
    });
   }
 
-  getCardProducts () {
-    return this.cardHttp.get(this.card_url , {headers : this.reqHeader})
-  }
-
-  updateCardProducts(buyingProcess :any) {
-    return this.cardHttp.patch(this.card_url , buyingProcess ,  {headers : this.reqHeader})
-  }
-
-  deleteCardProduct (processID :any){
-    
-    let  options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'authorization' : this.userToken , 
-      }),
-      body: {
-        _id: processID
-      },
-    };
 
 
-    return this.cardHttp.delete(this.card_url , options)
-  }
-
-  addcardProduct(prod:any){
-    
+  addCardProduct(prod : any) {
     console.log("add card 2")
     return this.cardHttp.post(this.card_url , {productId : prod.productId , quantity : 1} , {headers : this.reqHeader})
-    
   }
 
-
+  
 }

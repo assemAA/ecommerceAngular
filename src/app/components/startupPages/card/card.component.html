@@ -1,0 +1,32 @@
+
+<h5 class="text-center mt-3 display-3"> NEW ARIVALS</h5>
+<div class="album py-5 bg-light mb-5">
+    <div class="container w-75 mx-auto">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5" >
+        <div class="col col-lg-4 col-sm-12" *ngFor="let item of products">
+          <div class="card shadow-sm">
+          <img [src]="item.img" alt="">
+
+            <div class="card-body">
+              <p class="card-text bg-light rounded text-center p-2" style="box-shadow:2px 3px rgb(235, 189, 215) ;">{{item. proName}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+             
+                <div class="btn-group w-75 mx-auto">
+                  <div class="p-2 alert alert-success text-center  mx-auto">New Arrival </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <br>
+  
+
+
