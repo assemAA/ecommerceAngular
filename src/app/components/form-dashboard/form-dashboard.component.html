@@ -1,0 +1,53 @@
+  
+  <div class="d-flex align-items-center justify-content-center" style="height: 55vh;">
+    <div class="text-center" style="width: 80vh;">
+      <form class="text-start " [formGroup]="productform" (ngSubmit)="Add($event)">
+        <div class="mb-3">
+          <label  class="form-label"> Name</label>
+          <input type="text" class="form-control"  
+            placeholder="Enter Your Email" formControlName="productName">
+          <ng-container *ngIf="getName.touched">
+            <div *ngIf="getName.hasError('required')" id="emailHelp" class="form-text text-danger">product name is required </div>
+           
+  
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Description</label>
+          <input type="text" class="form-control"  placeholder="Enter Your PassWord"
+            formControlName="description">
+          <ng-container *ngIf="getDescribtion.touched">
+            <div *ngIf="getDescribtion.hasError('required')" id="emailHelp" class="form-text text-danger">Describtion is required</div>
+           
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Price</label>
+          <input type="text" class="form-control" placeholder="Enter Your PassWord"
+            formControlName="price">
+          <ng-container *ngIf="getPrice.touched">
+            <div *ngIf="getPrice.hasError('required')" id="emailHelp" class="form-text text-danger">product price is required</div>
+            
+  
+  
+          </ng-container>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Image Path</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Your PassWord"
+            formControlName="productImage">
+          <ng-container *ngIf="getProductImage.touched">
+            <div *ngIf="getProductImage.hasError('required')"  class="form-text text-danger">Image path is required</div>
+           
+  
+  
+          </ng-container>
+        </div>
+  
+        <button type="submit" class="btn btn-primary" >{{productId?"Edit Product":"Add New Product"}}</button>
+      </form>
+    </div>
+  </div>
+
+
+

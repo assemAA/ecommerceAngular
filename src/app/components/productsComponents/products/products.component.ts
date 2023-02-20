@@ -1,9 +1,11 @@
-import { productService } from 'src/app/services/products.services';
+import { productService } from 'src/app/services/products.service';
 import { Component, OnInit } from '@angular/core';
 //import { Iprodect } from '../../../models/products';
 import { Router } from '@angular/router';
 import { CardService } from '../../../services/card.service';
 import { BuyProcessService } from '../../../services/buy-process.service';
+import { DashboardService } from '../../../services/dashboard.service';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -11,9 +13,10 @@ import { BuyProcessService } from '../../../services/buy-process.service';
 })
 export class ProductsComponent implements OnInit {
 
-  loginStatus : string |undefined |null = ""
+   loginStatus : string |undefined |null = ""
   
   constructor(
+    private dashboardService  : DashboardService,
     private productService: productService,
     private router: Router,
     public buyProcess : BuyProcessService
@@ -22,16 +25,24 @@ export class ProductsComponent implements OnInit {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/userLogin']);
     }
+    else{
+      if(localStorage.getItem('loginStatus')=='login as admin'){
+        this.loginStatus='admin'
+
+      }
+      else{
+        this.loginStatus='user'
+      }
+    }
 
     
   }
 
-  productsList: any;
 
+  productsList:any=[]
   ngOnInit(): void {
     this.productService.getproducts().subscribe((response: any) => {
-      this.productsList = Object.values(response);
-      console.log(this.productsList);
+      this.productsList=response.data
     });
   }
 
@@ -47,5 +58,13 @@ export class ProductsComponent implements OnInit {
       window.location.reload()
     })
     
+  }
+
+  deleteProductItem(productId:any){
+   
+    this.dashboardService.deleteProduct(productId).subscribe((response:any)=>{
+     this.productsList=this.productsList.filter((ele:any)=>ele._id!=productId)
+        
+    })
   }
 }
