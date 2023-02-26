@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light shadow-lg p-1 mb-5 bg-body rounded ">
+<nav class="navbar navbar-expand-lg bg-light shadow-lg p-1 bg-body rounded ">
   <div class="container-fluid ">
     
     
@@ -23,7 +23,7 @@
           <a class="nav-link" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
         </li>
         <li class="nav-item mx-4">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a>
         </li>
 
 
@@ -86,17 +86,17 @@
 
     <div *ngIf="loginStatus == 'admin'">
       <!--admin-->
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown" >
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown"  >
 
         <ul class="navbar-nav ">
   
           
-          <li class="nav-item dropdown mx-2">
+          <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               admin
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item user-select-none" (click)="userSignOut()">sign out </a></li>
+              <li><a class="dropdown-item user-select-none"  (click)="userSignOut()">sign out </a></li>
             </ul>
           </li>
         </ul>

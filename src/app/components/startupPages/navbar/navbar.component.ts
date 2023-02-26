@@ -12,6 +12,7 @@ export class NavbarComponent implements OnChanges , DoCheck , OnInit {
   needLogin :boolean = true
   cardProducts :any[] = []
   totalPrice : number = 0 
+  counterCard : number = 0
   loginStatus : string | undefined | null = ""
 
 
@@ -26,10 +27,10 @@ export class NavbarComponent implements OnChanges , DoCheck , OnInit {
       this.identifyLogin()
 
 
-      if (this.loginStatus == "user"){
+      if (localStorage.getItem('loginStatus') == "login as a normal user"){
         this.cardService.getCardProducts().subscribe( (res :any ) => {
         this.cardProducts = res.data 
-       // console.log(this.cardProducts)
+       console.log(this.cardProducts)
       })
     }
     
@@ -59,6 +60,8 @@ export class NavbarComponent implements OnChanges , DoCheck , OnInit {
       this.cardProducts.map((ele:any) => {
         this.totalPrice += ele.productId.price * ele.quantity
       })
+
+      
     }
     else if (localStorage.getItem('loginStatus') == "login as admin") {
       this.needLogin = false

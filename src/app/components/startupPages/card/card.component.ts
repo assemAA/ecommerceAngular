@@ -7,52 +7,30 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
 products:any[]=[{
-  img:"https://coffeenmore.co/wp-content/uploads/2022/12/costa-warming-lungo-300x300.jpg",
-  proName:" Brazil Organic",
-  description:"ddhsddhshd",
-  price:"120",
-
-},{
-  img:"https://coffeenmore.co/wp-content/uploads/2023/01/lavazza-crema-ricca-1-kg-300x300.jpg",
-  proName:"Esperanza De Colombia",
-  description:"ddhsddhshd",
-  price:"120",
-
-},{
-  img:"https://coffeenmore.co/wp-content/uploads/2022/11/ILLY-guatemala-beans-300x300.jpg",
-  proName:"coffee pods",
+  img:"https://www.couvee.co.id/wp-content/uploads/2019/07/6997C43E-435D-40D6-B614-1422CD8813B7-1024x1024.jpg",
+  proName:" Caramel Macchiato",
   
+
+
+},{
+  img:"https://www.couvee.co.id/wp-content/uploads/2019/07/91F03B67-957B-4AE9-9304-912AE2EFBDDF-1024x1024.jpg",
+  proName:"Matcha Latte",
+  
+
+
+},{
+  img:"https://www.couvee.co.id/wp-content/uploads/2019/11/232A4908-6056-45BD-8ED5-D03778D21EA5-1024x1024.jpg",
+  proName:"Flavored Caffe Latte",
+ 
 
 },
 {
-  img:"https://cdn.shopify.com/s/files/1/0479/2074/2554/products/CoffeeImage_700x.jpg?v=1601350619",
-  proName:"Ground Coffee ",
+  img:"https://www.couvee.co.id/wp-content/uploads/2019/07/F03B2AB7-12B6-47F6-AA82-3B924C32F96D-1024x1024.jpg",
+  proName:" Black Cookie Latte",
   
 
-},{
-  img:"https://cdn.shopify.com/s/files/1/0381/4634/2956/products/Paldo-TeumsaeStirFriedKoreamRamen-130g-5-648436122585_360x.jpg?v=1675707730",
-  proName:"Caramelized Almonds",
-  
 
-},{
-  img:"https://cdn.shopify.com/s/files/1/0381/4634/2956/products/Starbucks-NescafeDolceGusto-WhiteMocha-12capsules_360x.jpg?v=1673288163",
-  proName:"Taylors of Harrogate",
-  
+}
 
-},{
-  img:"https://cdn.shopify.com/s/files/1/0381/4634/2956/products/RitterSport-CrispyCoffee-100g-24-4000417694119_360x.jpg?v=1675707849",
-  proName:"Crispy Coffee",
-  
-
-},{
-  img:"https://cdn.shopify.com/s/files/1/0381/4634/2956/products/RitterSport-CaramelizedAlmonds-100g-12-47.5-65-4000417296009_360x.jpg?v=1675983633",
-  proName:"Starbucks ",
-  
-
-},{
-  img:"https://cdn.shopify.com/s/files/1/0381/4634/2956/products/Nespresso-EsperanzaDeColombia-LimitedEdition-10capsules_540x.jpg?v=1666209679",
-  proName:"Paldo",
-  
-
-}]
+]
 }

@@ -39,10 +39,15 @@ export class DashboardService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'authorization' : this.adminToken , 
-      })
+      }) ,
+      body :{
+        _id : productId
+      }
     };
-    return this.productHttp.delete(`${this.product_url}/${productId }`,options)
+    return this.productHttp.delete(this.product_url,options)
   }
+
+  
   editProduct(product :any ,productId :any){
   
     return this.productHttp.patch(this.product_url,product,{headers : this.reqHeader})

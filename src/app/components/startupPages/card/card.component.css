@@ -1,3 +1,8 @@
 img {
     height: 300px;
 }
+body{
+    font-family: "M PLUS Rounded 1c",sans-serif;
+    color: #ddd;
+    font-weight: bolder;
+}

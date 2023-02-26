@@ -21,6 +21,7 @@ import { productService } from './services/products.service';
 import { BuyProcessService } from './services/buy-process.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
+import { ContactComponent } from './components/startupPages/contact/contact.component';
 
 const routes : Routes = [
   {path : 'signup' , component : SignUpComponent} ,
@@ -29,13 +30,8 @@ const routes : Routes = [
   {path : 'about' , component : AboutComponent} , 
   {path : 'products' , component : ProductsComponent},
   {path : 'products/new' , component : FormDashboardComponent},
-  {path : 'products/:id' , component : FormDashboardComponent}
-
-
-  
-
-
-
+  {path : 'products/:id' , component : FormDashboardComponent} ,
+  {path : 'contact' , component : ContactComponent}
 ]
 
 @NgModule({
@@ -49,7 +45,7 @@ const routes : Routes = [
     FooterComponent,
     CardComponent,
     AboutComponent , 
-    ProductsComponent, DashboardComponent, FormDashboardComponent
+    ProductsComponent, DashboardComponent, FormDashboardComponent, ContactComponent
 
   ],
   imports: [

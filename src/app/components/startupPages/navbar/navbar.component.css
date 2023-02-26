@@ -4,7 +4,8 @@ img {
 }
 
 a:hover {
-    background-color: yellow;
+    background-color: rgb(236, 199, 112);
+    opacity: .5;
     border-radius: 5%;
 }
 
